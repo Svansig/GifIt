@@ -11,14 +11,13 @@
 
 let API_KEY = "EvYizmjo014uXrSegPAF4upg6cGGG4Gf";
 
-let baseURL = "http://api.giphy.com/v1/gifs/search";
+let baseURL = "https://api.giphy.com/v1/gifs/search";
 
 let index = 0;
 let gifResponse;
 
 function imageScroll(direction) {
   index += direction;
-  console.log("got in the imagescroll");
   let image = document.getElementById("gifit");
   image.setAttribute("src", gifResponse.data[index].images.fixed_width.url);
 }
@@ -31,15 +30,23 @@ function addGif(inputElement, imageURL) {
 // take in the array of images and create the image element, with two buttons
 function createImage(imageElement, inputElement) {
   let imageContainer = document.createElement("div");
+  imageContainer.setAttribute("id", "img-container");
   let backButton = document.createElement("button");
-  let addGifButton = document.createElement("button");
   backButton.innerText = "back";
+  backButton.setAttribute("id", "back-button");
   let nextButton = document.createElement("button");
   nextButton.innerText = "next";
-  addGifButton.innerText = "add Gif";
-  backButton.addEventListener("click", () => imageScroll(-1));
-  nextButton.addEventListener("click", () => imageScroll(1));
-  addGifButton.addEventListener("click", () =>
+  nextButton.setAttribute("id", "next-button");
+  backButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    imageScroll(-1);
+  });
+  nextButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    imageScroll(1);
+  });
+
+  imageElement.addEventListener("click", () =>
     addGif(inputElement, gifResponse.data[index].images.fixed_width.url)
   );
   imageElement.setAttribute("id", "gifit");
@@ -48,16 +55,14 @@ function createImage(imageElement, inputElement) {
     gifResponse.data[index].images.fixed_width.url
   );
   imageElement.setAttribute("width", inputElement.clientWidth);
-  //   console.log(gifResponse);
+  imageContainer.setAttribute("style", `width:${inputElement.clientWidth}px`);
   imageContainer.appendChild(backButton);
-  imageContainer.appendChild(addGifButton);
   imageContainer.appendChild(imageElement);
   imageContainer.appendChild(nextButton);
   return imageContainer;
 }
 
 async function goGeddit(inputElement, searchString) {
-  console.log("getting it");
   let query = `api_key=${API_KEY}&q=${searchString}`;
   let res = await fetch(baseURL + "?" + query);
   gifResponse = await res.json();
@@ -70,7 +75,7 @@ function changeHandler() {
   let timeoutID;
   return (event) => {
     let value = event.target.value;
-    document.getElementById("gifit")?.remove();
+    document.getElementById("img-container")?.remove();
     clearTimeout(timeoutID);
     timeoutID = setTimeout(() => goGeddit(event.target, value), 1500);
   };

@@ -1,0 +1,25 @@
+{
+  "name": "GifIt",
+  "version": "1.0",
+  "description": "CODESMITH HACKATHON NY19!",
+  "manifest_version": 2,
+  "background": {
+    "scripts": ["main.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "declarativeContent",
+    "declarativeWebRequest"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "run_at": "document_end",
+      "js": ["main.js"],
+      "css": ["main.css"]
+    }
+  ],
+  "optional_permissions": ["http://*/", "https://*/"]
+}
