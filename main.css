@@ -13,7 +13,8 @@
   border: none;
   background: rgba(109, 214, 218, 0.2);
   opacity: 0;
-  padding: 2rem;
+  padding: 30% 10%;
+  font-size: x-large;
 }
 
 #img-container > button:hover {

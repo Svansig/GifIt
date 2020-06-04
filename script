@@ -15,3 +15,24 @@ S - INTRODUCING GIFIT! JUST TYPE AND GET GIFS!
 (Demonstrate the App)
 
 Both (Audibly): Thumbs up!
+
+
+
+TECHNICAL CHALLENGES:
+
+
+1. Because we were putting the next and previous buttons as children of an input, the default behavior for clicking is to submit the input.  We needed to attach preventDefault to the event to keep it from submitting the input.
+
+2. Preventing the bubbling behavior with the buttons when trying to 'click off' of the image.  We found stopPropogate to keep it from also clicking the document.
+
+3. We were putting a listener on the 'input' event of the input element, which will fire every time someone types a new character into the input.  To combat this, we debounced the input with a timeout of 1 second.
+
+4. The images tended to load a little slowly for our liking, so we used a smaller file for the initial load.  The URL submitted to the input is full sized.  If we had more time, we could tie this to a media query to determine which image to load.
+
+5. Even after the smaller image is loaded, it was still a touch slow, so after the first picture is loaded, it caches the next five.  Every time the image is scrolled, it adds an additional image to the cache, if the image isn't already present.  
+
+6. Just figuring out how to work in the chrome extension framework was confusing.  It was unclear how to get our script to run on the page. 
+
+Remaining possible issues:
+
+1. Resizing the button to the image has not worked yet.

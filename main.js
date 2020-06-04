@@ -1,14 +1,11 @@
 // Style the buttons - ~meh
-// Refactor the code - check
-// set g rating - check
-// Make a demo html file - check
 // Present on demo / live google
+// set button padding to be 100% of image height
 // turn on / off
-// cache some of the next gifs - check
 // summarize technical challenges
 
 const API_KEY = "EvYizmjo014uXrSegPAF4upg6cGGG4Gf"; // bad practice, but we're in dev and giphy isn't that secure
-const DEBOUNCE_TIME = 1500;
+const DEBOUNCE_TIME = 1000;
 
 const baseURL = "https://api.giphy.com/v1/gifs/search";
 
@@ -42,7 +39,6 @@ function imageScroll(direction) {
 // inserts the gif url into the input element
 function addGif(inputElement, imageURL) {
   inputElement.value = imageURL;
-  inputElement.removeEventListener("change");
 }
 
 // creates a button with the name
@@ -101,6 +97,7 @@ async function getGIF(inputElement) {
   let image = attachImage(inputElement);
   inputElement.after(image);
   preloadedImages = [];
+  index = 0;
   preloadImages();
   document.addEventListener("click", () => {
     document.getElementById("img-container")?.remove();
