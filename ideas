@@ -1,0 +1,27 @@
+Chrome Extension
+
+Sit on top of the taskbar and either:
+1. Modify the page we are on
+2. Make a new page (like a separate one)
+
+// Pop up gifs based on your typed input
+// Would it take an extra button press?
+
+Dancing baby + press our button
+listen for keypress - each time this will set off an event
+each time an event is called, it will cancel the previous event,
+which is on a setTimeout
+
+a - send an event 'a'
+b - cancels a, send b
+
+finally resolves, then the request is sent
+
+Pop up a gif right above the input? or below?
+Have a button to change the input to the gif?
+
+[ http://giphy.com/laughing             ]
+..........
+here's a gif - button
+left / right arrows
+previous / next gif
