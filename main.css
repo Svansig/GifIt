@@ -9,15 +9,15 @@
 #img-container > button {
   position: absolute;
   z-index: 99;
-  box-shadow: 2px 2px black;
   color: white;
-  background-color: orange;
+  border: none;
+  background: rgba(109, 214, 218, 0.2);
   opacity: 0;
-  padding: 1rem;
+  padding: 2rem;
 }
 
 #img-container > button:hover {
-  opacity: 0.5;
+  opacity: 1;
 }
 
 #img-container > img {

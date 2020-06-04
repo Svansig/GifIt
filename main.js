@@ -1,7 +1,7 @@
-// Style the buttons
+// Style the buttons - ~meh
 // Refactor the code - check
 // set g rating - check
-// Make a demo html file
+// Make a demo html file - check
 // Present on demo / live google
 // turn on / off
 // cache some of the next gifs - check
