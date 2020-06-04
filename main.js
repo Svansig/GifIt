@@ -43,7 +43,7 @@ function createImage(imageElement, inputElement) {
 
   imageElement.addEventListener("click", (e) => {
     e.stopPropagation();
-    addGif(inputElement, gifResponse.data[index].images.fixed_width.url);
+    addGif(inputElement, gifResponse.data[index].images.original.url);
   });
   imageElement.setAttribute("id", "gifit");
   imageElement.setAttribute(
